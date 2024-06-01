@@ -3,9 +3,9 @@ vector_1: .word 1, 2
 vector_2: .word 3, 4
 matrix: vector_1, vector_2
 
-.macro ACCESS (%matrix, %li, %col)
-	addi t1, t1, %li
-	addi t2, t2, %col
+.macro ACCESS (%matrix, %line, %column)
+	addi t1, t1, %line
+	addi t2, t2, %column
 	li t3, 4
 	
 	mul t1, t1, t3
