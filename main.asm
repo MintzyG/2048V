@@ -1,4 +1,4 @@
-.include "./macros.asm"
+.include "./macros/macros.asm"
 
 .data
 vector_1: .word 1, 2
