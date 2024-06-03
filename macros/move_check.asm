@@ -22,8 +22,8 @@ vert: .asciz "VERT!\n"
       for_loop_2:
 	bge a2, a3, for_loop_1_step_2
 	
-	beqz a2, first
-	beq a2, a4, last
+	beqz a2, end_loop_2
+	beq a2, a4, end_loop_2
 	
 	  #PRINT(mid)
 	  MATRIX_FETCH(matrix, a1, a2)
@@ -36,24 +36,6 @@ vert: .asciz "VERT!\n"
 	  beq s0, s1, possible
 	  j end_loop_2
 	
-	first:
-	  #PRINT(firs)
-	  MATRIX_FETCH(matrix, a1, a2)
-	  mv s1, s0
-	  addi t0, a2, 1
-	  MATRIX_FETCH(matrix, a1, t0)
-	  beq s0, s1, possible
-	  j end_loop_2
-	  
-	last:
-          #PRINT(las)
-          MATRIX_FETCH(matrix, a1, a2)
-	  mv s1, s0
-	  addi t0, a2, -1
-	  MATRIX_FETCH(matrix, a1, t0)
-	  beq s0, s1, possible
-	  j end_loop_2
-	  
 	end_loop_2:
 	  addi a2, a2, 1
 	  j for_loop_2
@@ -74,8 +56,8 @@ vert: .asciz "VERT!\n"
       for_loop_2v:
 	bge a2, a3, for_loop_1_step_2v
 	
-	beqz a2, firstv
-	beq a2, a4, lastv
+	beqz a2, end_loop_2v
+	beq a2, a4, end_loop_2v
 	
 	  #PRINT(mid)
 	  MATRIX_FETCH(matrix, a2, a1)
@@ -88,24 +70,6 @@ vert: .asciz "VERT!\n"
 	  beq s0, s1, possible
 	  j end_loop_2v
 	
-	firstv:
-	  #PRINT(firs)
-	  MATRIX_FETCH(matrix, a1, a2)
-	  mv s1, s0
-	  addi t0, a2, 1
-	  MATRIX_FETCH(matrix, a1, t0)
-	  beq s0, s1, possible
-	  j end_loop_2v
-	  
-	lastv:
-          #PRINT(las)
-          MATRIX_FETCH(matrix, a1, a2)
-	  mv s1, s0
-	  addi t0, a2, -1
-	  MATRIX_FETCH(matrix, a1, t0)
-	  beq s0, s1, possible
-	  j end_loop_2v
-	  
 	end_loop_2v:
 	  addi a2, a2, 1
 	  j for_loop_2v
