@@ -13,3 +13,4 @@
 .include "./space_char.asm"
 .include "./mapping.asm"
 .include "./init.asm"
+.include "./move_check.asm"

@@ -22,4 +22,5 @@
 		j for_loop_2
 	
 	continue:
+	NEW_LINE()
 .end_macro
