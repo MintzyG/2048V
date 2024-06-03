@@ -5,4 +5,7 @@
 .include "./input.asm"
 .include "./convert.asm"
 .include "./new_line.asm"
+.include "./set_new_cell.asm"
 .include "./print.asm"
+.include "./print_addr.asm"
+.include "./print_all.asm"
