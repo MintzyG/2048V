@@ -11,3 +11,5 @@
 .include "./print_addr.asm"
 .include "./print_all.asm"
 .include "./space_char.asm"
+.include "./mapping.asm"
+.include "./init.asm"
