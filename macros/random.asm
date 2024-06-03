@@ -6,39 +6,37 @@ rand: .word 23, 45, 17, 82, 51, 99, 64, 15, 37, 76, 29, 62, 86, 5, 93, 13, 49, 7
 # rand_ptr stores the current index of rand, so you can use it multiple times without starting at 0
  
 # Gets a random number using the current index plus the user input modulo 100
-# Returns on a0 (if you use a0 after this macro without saving the value first you lose it)
+# Returns on s0
 .macro RANDOM (%key, %rand_ptr)
-
-  #  Loads rand_ptr into s0 and loads first item of s0 into t5
-  la s0, %rand_ptr
-  lw t4, 0(s0)
-  
-  # starts variables t0 for sum
-  # starts variable t1 as fixed size of rand and offset multiplier
+  # loads t0 as the new index
+  # loads t1 as rand size
   li t0 0
   li t1 100
-  li t2, 4
   
-  # adds current index of rand and key value
+  # adds key value to t0
   add t0, t0, %key
-  add t0, t0, t4
+
+  #  Loads rand_ptr into s0 and loads current index into t3
+  la s0, %rand_ptr
+  lw t2, 0(s0)
+  # adds current index value to t0
+  add t0, t0, t2
+  
+  # if (t0 < 100) jump to menos_cem, else subtract 100 and continue 
   blt t0, t1, menos_cem 
-  sub t0, t0, t1 # if t0 >= 100 than subtract 100 from t0	
+  sub t0, t0, t1 	
  
   menos_cem:
-  # Saves new value to rand_ptr
-  sw t0, 0(s0)
-  
-  # loads rand
-  la s1, rand 	
-  
-  # applies the int offset to t3 using the index
-  mul t3, t2, t0 
-  # moves inside rand the apropriate amount
-  add s1, s1, t3
-  # gets and returns the rand value in a0		
-  # value is saved in a1 to be able to print without losing it
-  # we can change back to a0 later
-  lw a0, 0(s1)			
-	 
+    # replaces t1 with int size
+    li t1 4
+    # Saves new index value to rand_ptr
+    sw t0, 0(s0)
+	  
+    # applies the int offset to t2 using the index 
+    mul t2, t1, t0 
+    # loads rand into s0 and walks the new index amount
+    la s0, rand 
+    add s0, s0, t2
+    # gets and returns the rand value in s0		
+    lw s0, 0(s0)				 
 .end_macro
