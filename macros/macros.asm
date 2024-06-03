@@ -2,3 +2,5 @@
 .include "./matrix_change_value.asm"
 .include "./matrix_print_value.asm"
 .include "./random.asm"
+.include "./input.asm"
+.include "./convert.asm"
