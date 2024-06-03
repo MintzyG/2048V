@@ -5,3 +5,4 @@
 .include "./input.asm"
 .include "./convert.asm"
 .include "./new_line.asm"
+.include "./print.asm"
