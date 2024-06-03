@@ -1,6 +1,6 @@
 .macro MATRIX_CHANGE_VALUE (%matrix, %line, %column, %value)
-	li t1, %line
-	li t2, %column
+	mv t1, %line
+	mv t2, %column
 	li t3, 4
 	li t4, %value
 	

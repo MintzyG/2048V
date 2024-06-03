@@ -1,3 +1,4 @@
+# returns on s0
 .macro MATRIX_FETCH (%matrix, %line, %column)
 	mv t1, %line
 	mv t2, %column
@@ -10,5 +11,5 @@
 	add s0, s0, t1
 	lw t0, 0(s0)
 	add t0, t0, t2
-	lw a0, 0(t0)
+	lw s0, 0(t0)
 .end_macro
