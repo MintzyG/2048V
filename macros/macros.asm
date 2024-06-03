@@ -1,6 +1,7 @@
 .include "./matrix_fetch.asm"
 .include "./matrix_change_value.asm"
 .include "./matrix_print_value.asm"
+.include "./matrix_print.asm"
 .include "./random.asm"
 .include "./input.asm"
 .include "./convert.asm"
@@ -9,3 +10,4 @@
 .include "./print.asm"
 .include "./print_addr.asm"
 .include "./print_all.asm"
+.include "./space_char.asm"
