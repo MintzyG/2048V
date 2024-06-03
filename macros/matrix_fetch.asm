@@ -1,6 +1,6 @@
 .macro MATRIX_FETCH (%matrix, %line, %column)
-	li t1, %line
-	li t2, %column
+	mv t1, %line
+	mv t2, %column
 	li t3, 4
 	
 	mul t1, t1, t3
