@@ -49,6 +49,8 @@
 		add t5, t3, t4
 		sw t5, 0(t0)
 		sw zero, 0(t1)
+		li t6, -1
+		COUNT(counter, t6)
 		
 		addi t0, t0, 4
 		addi t1, t1, 4

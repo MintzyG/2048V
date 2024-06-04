@@ -20,3 +20,6 @@
 .include "./moves.asm"
 .include "./proccess_line_d.asm"
 .include "./translate.asm"
+.include "./move_switch.asm"
+.include "./move_left.asm"
+.include "./move_right.asm"

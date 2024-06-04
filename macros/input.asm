@@ -3,4 +3,5 @@
   li a7, 12
   ecall
   mv s0, a0
+  NEW_LINE()
 .end_macro
