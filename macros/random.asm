@@ -30,6 +30,8 @@ rand: .word 23, 45, 17, 82, 51, 99, 64, 15, 37, 76, 29, 62, 86, 5, 93, 13, 49, 7
     # replaces t1 with int size
     li t1 4
     # Saves new index value to rand_ptr
+    li t3, 1
+    add t0, t0, t3
     sw t0, 0(s0)
 	  
     # applies the int offset to t2 using the index 
