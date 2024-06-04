@@ -26,7 +26,7 @@
   la t1, counter
   lw t2, 0(t1)
   li t3, 16
-  beq t2, t3, no_cell
+  bge  t2, t3, no_cell
   SET_NEW_CELL()
   no_cell:
 .end_macro
