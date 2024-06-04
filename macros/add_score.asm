@@ -1,6 +1,6 @@
 .macro ADD_SCORE(%score, %amount)
-  la s0, %score
-  lw t0, 0(s0)
-  add t0, t0, %amount
-  sw t0, 0(s0)
+  la s11, %score
+  lw s10, 0(s11)
+  add s10, s10, %amount
+  sw s10, 0(s11)
 .end_macro
