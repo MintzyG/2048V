@@ -51,7 +51,7 @@ sou: .asciz "sou quatro: "
       	#PRINT_ALL(sou, t4)
         MATRIX_CHANGE_VALUE (matrix, t2, t3, 4)
       end:
-      mv t2, s1
-      mv t3, s2
+      li s9, 1
+      COUNT(counter, s9)
       #MATRIX_PRINT_VALUE (matrix, t2, t3)
 .end_macro

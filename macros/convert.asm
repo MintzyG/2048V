@@ -10,15 +10,15 @@
   li t0, 'd'
   beq t0, %input, D
   W:
-    li s0, 13
+    li s1, 13
     j end
   A:
-    li s0, 52
+    li s1, 52
     j end
   S:
-    li s0, 47
+    li s1, 47
     j end
   D:
-    li s0, 86
+    li s1, 86
   end:
 .end_macro

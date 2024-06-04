@@ -24,7 +24,7 @@
 		
 		beq t4, zero, move_sum_pointer
 		beq t3, zero, move_to_empty
-		beq t3, zero, equal_destination
+		beq t3, t4, equal_destination
 		
 		addi t0, t0, -4
 		bne t0, t1, while
@@ -50,6 +50,8 @@
 		add t5, t3, t4
 		sw t5, 0(t0)
 		sw zero, 0(t1)
+		li t6, -1
+		COUNT(counter, t6)
 		
 		addi t0, t0, -4
 		addi t1, t1, -4
