@@ -14,3 +14,5 @@
 .include "./mapping.asm"
 .include "./init.asm"
 .include "./move_check.asm"
+.include "./quit.asm"
+.include "./add_score.asm"
