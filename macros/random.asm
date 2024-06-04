@@ -18,7 +18,7 @@ rand: .word 23, 45, 17, 82, 51, 99, 64, 15, 37, 76, 29, 62, 86, 5, 93, 13, 49, 7
 
   #  Loads rand_ptr into s0 and loads current index into t3
   la s1, %rand_ptr
-  lw t2, 0(s1)
+  lw t2, 0(s0)
   # adds current index value to t0
   add t0, t0, t2
   
@@ -28,19 +28,13 @@ rand: .word 23, 45, 17, 82, 51, 99, 64, 15, 37, 76, 29, 62, 86, 5, 93, 13, 49, 7
   # replaces t1 with int size
   li t1 4
   # Saves new index value to rand_ptr
-  sw t0, 0(s1)
+  sw t0, 0(s0)
   
   # applies the int offset to t2 using the index 
   mul t2, t1, t0 
   # loads rand into s0 and walks the new index amount
-  la s1, rand 
-  add s1, s1, t2
+  la s0, rand 
+  add s0, s0, t2
   # gets and returns the rand value in s0	
-  lw s0, 0(s1)
-  PRINT_ADDR(s0)
-  NEW_LINE()
-  la s2, %rand_ptr
-  lw s2, 0(s2)
-  PRINT_ADDR(s2)
-  NEW_LINE()
+  lw s0, 0(s0)
 .end_macro
