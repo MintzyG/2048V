@@ -7,8 +7,6 @@ vector_3: .word 8, 9, 10, 11
 vector_4: .word 12, 13, 14, 15
 matrix: vector_1, vector_2, vector_3, vector_4
 
-new_line: .asciz "\n"
-
 .text
 
 main:
