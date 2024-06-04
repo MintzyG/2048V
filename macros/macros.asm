@@ -19,3 +19,4 @@
 .include "./count.asm"
 .include "./moves.asm"
 .include "./proccess_line_d.asm"
+.include "./translate.asm"
