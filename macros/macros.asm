@@ -16,3 +16,4 @@
 .include "./move_check.asm"
 .include "./quit.asm"
 .include "./add_score.asm"
+.include "./count.asm"
