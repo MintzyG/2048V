@@ -22,15 +22,15 @@ counter: .word 0
 main:
 	INIT()
 	while:
-	  MATRIX_PRINT(matrix)
-	  GET_INPUT_CHAR()
-	  mv s6, s0
-	  CONVERT_INPUT(s6)
-	  RANDOM(s1, rand_ptr)
-	  MOVE_SWITCH(s6)
-	  la t1, counter
-    lw t2, 0(t1)
-    li t3, 16
-    blt t2, t3, while
-    POSSIBLE_CHECK(matrix)
-  j while
+	MATRIX_PRINT(matrix)
+	GET_INPUT_CHAR()
+	mv s6, s0
+	CONVERT_INPUT(s6)
+	RANDOM(s1, rand_ptr)
+	MOVE_SWITCH(s6)
+	la t1, counter
+	lw t2, 0(t1)
+	li t3, 16
+	blt t2, t3, while
+	POSSIBLE_CHECK(matrix)
+	j while
