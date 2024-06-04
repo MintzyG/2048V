@@ -17,3 +17,5 @@
 .include "./quit.asm"
 .include "./add_score.asm"
 .include "./count.asm"
+.include "./moves.asm"
+.include "./proccess_line_d.asm"
