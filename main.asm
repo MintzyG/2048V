@@ -28,6 +28,9 @@ main:
 	  CONVERT_INPUT(s6)
 	  RANDOM(s1, rand_ptr)
 	  MOVE_SWITCH(s6)
-	
-          POSSIBLE_CHECK(matrix)
-	  j while
+	  la t1, counter
+    lw t2, 0(t1)
+    li t3, 16
+    blt t2, t3, while
+    POSSIBLE_CHECK(matrix)
+  j while
