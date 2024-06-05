@@ -17,8 +17,6 @@
 .include "./quit.asm"
 .include "./add_score.asm"
 .include "./count.asm"
-.include "./moves.asm"
-.include "./proccess_line_d.asm"
 .include "./translate.asm"
 .include "./move_switch.asm"
 .include "./move_left.asm"
