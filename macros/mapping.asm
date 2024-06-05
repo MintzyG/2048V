@@ -1,6 +1,8 @@
 .data
 wrong: .asciz "You've entered a wrong char, pls enter another: "
 
+#AM similar to convert but applies random offsets for the whole alphabet
+#AM it also directly calls random to apply the offset imediately
 .macro ALPHABET_MAPPING(%char)
 loop:
   li t0, 'a'

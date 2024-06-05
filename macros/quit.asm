@@ -1,11 +1,6 @@
+#Q prints score and quits the game
 .macro QUIT(%score)
-  la s0, %score
-  lw t0, 0(s0)
-  
-  mv a0, t0
-  li a7, 1
-  ecall
-  
+  PRINT_SCORE(%score)
   li a7, 10
   ecall
 .end_macro
