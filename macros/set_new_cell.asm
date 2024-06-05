@@ -1,39 +1,36 @@
 .macro SET_NEW_CELL()
-  mv s0, zero                # sets s0 as 0 to get current random number
   start:
-    RANDOM(s0, rand_ptr)     # gets current random number
-    mv t3, s0                # saves random number in t3
+    li s0, 1 #SNC sets s0 as 1 to get next random number
+    RANDOM(s0, rand_ptr) #SNC gets the random number
 
-    li t1, 16                # saves the modulo amount for matrix position
-    rem t3, t3, t1           # calculates the position 0 indexed
-    addi t3, t3, 1           # adds 1 to the position
-    li t2 0                  # creates a counter with 0
+    li t0, 16 #SNC value needed for % operation
+    rem s0, s0, t0 #SNC calculates the position 0 indexed
+    addi s0, s0, 1 #SNC fixes the position adding 1
+
+    li t0, 0 #SNC creates a counter with 0
     loop:
-      li t0 4                # creates an offset with 4
-      sub t3, t3, t0         # subtracts 4 from position
-      addi t2, t2, 1         # counter += 1 for every subtraction > 0
-      li t0, 1               # loads 1 for if to check if <= 0
-      blt t3, t0, get_pos    # -> gets that position current value else
-      j loop                 # keeps subtracting and counting
-    
-    get_pos:                        # gets here once t3 <= 0
-      li t0 1                       # loads 1 to subtract
-      sub s1, t2, t0                # subtracts 1 from the counter to find line | (i)
-      addi s2, t3, 3                # adds 3 to t3 to find the element          | (j) 
-      MATRIX_FETCH(matrix, s1, s2)  # gets  number at position matrix[i][j]
-      bnez s0 start                 # if its not zero restart and find another position
-      addi s0, s0, 1                # adds 1 to s0 to further randomize
-      RANDOM(s0, rand_ptr)          # gets a new random number
-      li t1 10                      # loads 10 for modulo operation
-      rem t4, s0, t1                # calculates the remainder of the random number with 10
-      addi t4, t4, 1                # adds 1 to result for range 1-10 instead of 0-9
-      li t1, 1                      # loads 1 to for if
-      beq t4, t1 quatro             # if t4 == 1 goes to label quatro:
-        MATRIX_CHANGE_VALUE (matrix, s1, s2, 2) # set matrix[i][j] to 2
-        j end                       # ends macro
+      addi s0, s0, -4 #SNC subtracts 4 from position
+      addi t0, t0, 1 #SNC counter += 1 for every subtraction > 0
+      ble s0, zero, get_pos #SNC -> gets that position current value else
+      j loop #SNC keeps subtracting and counting
+
+    get_pos: #SNC gets here once t3 <= 0
+      addi s1, t0, -1 #SNC subtracts 1 from the counter to find line | (i)
+      addi s2, s0, 3 #SNC adds 3 to t3 to find the element | (j)
+      MATRIX_FETCH(matrix, s1, s2) #SNC gets  number at position matrix[i][j]
+      bnez s0, start #SNC if value != 0 find another position
+      li s0, 1 #SNC sets s0 to 1 further optimize
+      RANDOM(s0, rand_ptr) #SNC gets a new random number
+      li t0, 10 #SNC loads 10 for modulo operation
+      rem t0, s0, t0 #SNC calculates the remainder of the random number with 10
+      addi t0, t0, 1 #SNC adds 1 to result for range 1-10 instead of 0-9
+      li t1, 1 #SNC loads 1 to for if
+      beq t0, t1, quatro #SNC if t4 == 1 goes to label quatro:
+        MATRIX_CHANGE_VALUE (matrix, s1, s2, 2) #SNC set matrix[i][j] to 2
+        j end #SNC ends macro
       quatro:
-        MATRIX_CHANGE_VALUE (matrix, s1, s2, 4) # set matrix[i][j] to 4
+        MATRIX_CHANGE_VALUE (matrix, s1, s2, 4) #SNC set matrix[i][j] to 4
       end:
-      li s9, 1           # loads 1 to sum to count
-      COUNT(counter, s9) # count += 1
+      li s9, 1 #SNC loads 1 to sum to count
+      COUNT(counter, s9) #SNC count += 1
 .end_macro
