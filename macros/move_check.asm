@@ -75,9 +75,8 @@ cont: .asciz "You continue!\n"
       addi a1, a1, 1 #PC increments i by 1
       j for_loop_1_step_1v
   
-  
   possible:
-    li a1, 1 #PC future implementation for not spawning unecessary cells
+    #li s 7, 1 PC future implementation for not spawning unecessary cells
     j end #PC you still have moves left, jumps to end keeps playing
   finish:
     PRINT(lost) #PC you have no moves left

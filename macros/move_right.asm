@@ -38,6 +38,7 @@
 		j while
 		
 	move_to_empty:
+    li, s7, 1
 		lw t5, 0(t1)
 		sw t5, 0(t0)
 		sw zero, 0(t1)
@@ -47,6 +48,7 @@
 		j while
 		
 	equal_destination:
+    li, s7, 1
 		add t5, t3, t4
 		sw t5, 0(t0)
 		sw zero, 0(t1)
