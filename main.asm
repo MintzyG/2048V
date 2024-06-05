@@ -2,7 +2,7 @@
 
 .data
 
-.global matrix temp rand_ptr counter
+.global matrix temp rand_ptr counter score
 vector_1: .word 0, 0, 0, 0
 vector_2: .word 0, 0, 0, 0
 vector_3: .word 0, 0, 0, 0
@@ -17,6 +17,7 @@ temp: vector_5, vector_6, vector_7, vector_8
 
 rand_ptr: .word 0
 counter: .word 0
+score: .word 0
 .text
 
 main:
