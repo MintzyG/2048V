@@ -77,6 +77,7 @@ cont: .asciz "You continue!\n"
   
   possible:
     #li s 7, 1 PC future implementation for not spawning unecessary cells
+    MATRIX_PRINT(matrix)
     j end #PC you still have moves left, jumps to end keeps playing
   finish:
     PRINT(lost) #PC you have no moves left
