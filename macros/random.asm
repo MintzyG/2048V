@@ -7,13 +7,13 @@ rand: .word 23, 45, 17, 82, 51, 99, 64, 15, 37, 76, 29, 62, 86, 5, 93, 13, 49, 7
  
 # Gets a random number based on user input
 .macro RANDOM (%key, %rand_ptr)
-  la s0, %rand_ptr #R loads rand_ptr into s0
-  lw t0, 0(s0) #R loads current index into t0
+  la s3, %rand_ptr #R loads rand_ptr into s0
+  lw t0, 0(s3) #R loads current index into t0
   add t0, t0, %key #R adds key into current index
  
   li t1, 100 #R loads t1 as rand size
   rem  t0, t0, t1 #R stay inbounds by doing curr_index % 100
-  sw t0, 0(s0) #R saves the new curr index value
+  sw t0, 0(s3) #R saves the new curr index value
   
   li t1, 4 #R replaces t1 with int size
   mul t0, t0, t1 #R applies int offset to t0
