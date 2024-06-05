@@ -12,15 +12,34 @@
 	for_loop_1_step_2:
 		addi a2, a2, 1
 		NEW_LINE
+		NEW_LINE
+		NEW_LINE
 		j for_loop_1_step_1
 		
 	for_loop_2:
 		bge a1, a3, for_loop_1_step_2
+		MATRIX_FETCH(%matrix, a2, a1)
+		mv s9, s0
+		li s10, 10
+		li s11, 0
+		li s8 -1
+		loop_decimal_places:
+		div s9, s9, s10
+		addi s11, s11, 1
+		bne s9, zero, loop_decimal_places
+		
+		mul s11, s11, s8
+		addi s11, s11, 6
+		
+		loop_print_spaces:
+		SPACE_CHAR
+		addi s11, s11, -1
+		bgt s11, zero, loop_print_spaces
 		MATRIX_PRINT_VALUE(%matrix, a2, a1)
 		addi a1, a1, 1
 		SPACE_CHAR
 		j for_loop_2
 	
 	continue:
-	NEW_LINE()
+	NEW_LINE
 .end_macro
