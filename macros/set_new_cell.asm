@@ -18,7 +18,7 @@
       addi s1, t0, -1 #SNC subtracts 1 from the counter to find line | (i)
       addi s2, s0, 3 #SNC adds 3 to t3 to find the element | (j)
       MATRIX_FETCH(matrix, s1, s2) #SNC gets  number at position matrix[i][j]
-      bnez s0, start #SNC if value != 0 find another position
+      bnez s0, start #SNC (problem?) if value != 0 find another position
       li s0, 1 #SNC sets s0 to 1 further optimize
       RANDOM(s0, rand_ptr) #SNC gets a new random number
       li t0, 10 #SNC loads 10 for modulo operation
