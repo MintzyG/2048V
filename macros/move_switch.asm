@@ -29,10 +29,9 @@
   lw t0, 0(t0) #MS loads counter value
   li t1, 16 #MS loads limit
   bge t0, t1, no_cell #MS if counter == limit do not spawn a cell
-  PRINT_ADDR(s7)
-  NEW_LINE
   beq s7, zero, no_cell #MS if we haven't moved anything don't spawn a cell
   SET_NEW_CELL()
   no_cell:
-  li s7, 0
+  li s7, 0 #MS reset move keeper
+  PRINT_SCORE(score)
 .end_macro

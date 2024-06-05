@@ -50,6 +50,7 @@
 	equal_destination:
     li, s7, 1
 		add t5, t3, t4
+    ADD_SCORE(score, t5)
 		sw t5, 0(t0)
 		sw zero, 0(t1)
 		li t6, -1
