@@ -81,7 +81,7 @@ cont: .asciz "You continue!\n"
     j end #PC you still have moves left, jumps to end keeps playing
   finish:
     PRINT(lost) #PC you have no moves left
-    li a7, 10 #PC closes the game
-    ecall
+    MATRIX_PRINT(matrix) #PC prints the matrix before quitting
+    QUIT(score) #PC closes the game
   end:
 .end_macro
